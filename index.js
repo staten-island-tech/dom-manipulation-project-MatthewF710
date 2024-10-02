@@ -5,16 +5,10 @@ const DOMSelectors = {
   button: document.querySelector(".btn"),
   form: document.querySelector(".form"),
 };
-let student = {
-  name: "Ryan",
-  age: 15,
-  girlfriend: true,
-};
-DOMSelectors.button.addEventListener("click", function (event) {
-  console.log(event.target.parentElement);
-  event.target.parentElement.style.backgroundColor = "red";
-});
 DOMSelectors.form.addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log(document.querySelector("input").value);
+  let currentcard = document.querySelector("#main-name").value;
+  let currentdesc = document.querySelector("#main-description").value;
+  let currentimg = document.querySelector("#main-image").value;
+  console.log(currentcard, currentdesc, currentimg);
 });
