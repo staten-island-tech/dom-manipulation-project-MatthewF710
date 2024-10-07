@@ -1,6 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap');
 html, body * {
-    font-size:12px;
+    font-size: 10px;
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
+    font-family: "Jacquarda Bastarda 9", serif;
+}
+html {
+    background-image: url(images/htmlbg.jpg);
+}
+.title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    color: rgb(91, 255, 55);
+    font-size: 7rem;
+    text-shadow: 5px 5px 2.5px rgb(135, 135, 135);
+    text-align: center;
+}
+.form{
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    grid-row-gap: .5rem;
+    padding: 1rem;
+}
+#main-name, #main-description, #main-image {
+    font-size: 3rem;
+    text-shadow: 5px 5px 2.5px rgb(0, 0, 0);
+    color: rgb(7, 255, 218);
+}
+.main-btn {
+    height: 5rem;
+    width: 15rem;
+    font-size: 3rem;
+    background-color: rgb(230, 255, 138);
+    border-radius: 1.5em;
+    text-shadow:  5px 2.5px rgb(213, 213, 213)
+}
+.container{
+    width: 85vw;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    grid-row-gap: 2vw;
+    padding: 1rem;
+}
+.card{
+    height: auto;
+    width: 18%;
+    margin-top: 2%;
+    padding: 1em; 
+    border: .5rem solid black;
+    border-radius: 5em;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 2em;
+    box-shadow: 10px 10px 5px rgb(41, 62, 65);
+}
+.card-img{
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+.card-header{
+    font-size: 2rem;
+    text-align: center;
+}
+.description{
+    text-align: center;
+}
+@media (max-width: 1290px) {
+    h1 {
+        font-size: 5rem;
+    }
+    .container {
+        justify-content: center;
+    }
+    .card {
+        width: 25%;
+        height: 30rem;
+    }
+}
+@media (max-width: 1082px){
+    .card {
+        width: 38%;
+        height: 30rem;
+    }
+}
+@media (max-width: 724px){
+    .card {
+        width: 80%;
+        height: 30rem;
+    }
 }

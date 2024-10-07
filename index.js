@@ -1,14 +1,24 @@
 const DOMSelectors = {
-  header: document.querySelector("h1"),
-  items: document.querySelectorAll("li"),
-  cardHeader: document.querySelector(".card-header"),
+  //finding stuff
   button: document.querySelector(".btn"),
   form: document.querySelector(".form"),
 };
+let currentcard;
+let currentdesc;
+let currentimg;
 DOMSelectors.form.addEventListener("submit", function (event) {
   event.preventDefault();
-  let currentcard = document.querySelector("#main-name").value;
-  let currentdesc = document.querySelector("#main-description").value;
-  let currentimg = document.querySelector("#main-image").value;
-  console.log(currentcard, currentdesc, currentimg);
+  //redefining variables
+  let currentcard = document.querySelector("#name-input").value;
+  let currentdesc = document.querySelector("#description-input").value;
+  let currentimg = document.querySelector("#image-input").value;
+  //value inputs
+  console.log(
+    "Title:",
+    currentcard,
+    "\nDescription:",
+    currentdesc,
+    "\nImage (link):",
+    currentimg
+  );
 });
