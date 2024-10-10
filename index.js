@@ -12,12 +12,14 @@ const DOMSelectors = {
 let currentcard;
 let currentdesc;
 let currentimg;
+let currentcolor;
 DOMSelectors.form.addEventListener("submit", function (event) {
   event.preventDefault();
   //redefining variables
   let currentcard = document.querySelector("#name-input").value;
   let currentdesc = document.querySelector("#description-input").value;
   let currentimg = document.querySelector("#image-input").value;
+  let currentcolor = document.querySelector("#color-input").value;
   //value inputs
   console.log(
     "Title:",
@@ -25,10 +27,14 @@ DOMSelectors.form.addEventListener("submit", function (event) {
     "\nDescription:",
     currentdesc,
     "\nImage (link):",
-    currentimg
+    currentimg,
+    "\nColor (rgb):",
+    currentcolor
   );
   DOMSelectors.container.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="card"><h1>${currentcard}</h1><img src="${currentimg}" alt="card-img" class="card-img"><p>${currentdesc}</p> </div>`
+    "beforeEnd",
+    `<div class="card"><h1 class="card-header">${currentcard}</h1><img src="${currentimg}" alt="card-img" class="card-img"><p>${currentdesc}</p><button class="removeBtn">Remove</button></div>`
   );
+  const cardtest = document.getElementsByClassName("card");
+  cardtest.style.background-color = currentcolor.value;
 });
