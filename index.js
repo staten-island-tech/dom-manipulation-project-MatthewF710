@@ -35,6 +35,11 @@ DOMSelectors.form.addEventListener("submit", function (event) {
     "beforeEnd",
     `<div class="card"><h1 class="card-header">${currentcard}</h1><img src="${currentimg}" alt="card-img" class="card-img"><p>${currentdesc}</p><button class="removeBtn">Remove</button></div>`
   );
-  const cardtest = document.getElementsByClassName("card");
-  cardtest.style.background-color = currentcolor.value;
 });
+function back(color) {
+  let cards = document.getElementsByClassName("card");
+  if (cards.length > 0) {
+    cards[cards.length - 1].style.backgroundColor = color;
+  }
+}
+back(currentcolor);
