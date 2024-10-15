@@ -13,6 +13,11 @@ let currentcard;
 let currentdesc;
 let currentimg;
 let currentcolor;
+function back(color) {
+  let cards = document.getElementsByClassName("card");
+  cards[cards.length - 1].style.backgroundColor = `rgb(${color})`;
+  console.log(cards[cards.length - 1].style.backgroundColor);
+}
 DOMSelectors.form.addEventListener("submit", function (event) {
   event.preventDefault();
   //redefining variables
@@ -31,15 +36,10 @@ DOMSelectors.form.addEventListener("submit", function (event) {
     "\nColor (rgb):",
     currentcolor
   );
+  //inserting card
   DOMSelectors.container.insertAdjacentHTML(
     "beforeEnd",
     `<div class="card"><h1 class="card-header">${currentcard}</h1><img src="${currentimg}" alt="card-img" class="card-img"><p>${currentdesc}</p><button class="removeBtn">Remove</button></div>`
   );
+  back(currentcolor);
 });
-function back(color) {
-  let cards = document.getElementsByClassName("card");
-  if (cards.length > 0) {
-    cards[cards.length - 1].style.backgroundColor = color;
-  }
-}
-back(currentcolor);
