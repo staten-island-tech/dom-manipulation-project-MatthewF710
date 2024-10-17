@@ -14,6 +14,7 @@ let currentdesc;
 let currentimg;
 let currentcolor;
 let id = 0;
+let cardids = [];
 function coloring(color) {
   let cards = document.getElementsByClassName("card");
   cards[cards.length - 1].style.backgroundColor = `rgb(${color})`;
@@ -24,15 +25,17 @@ function create(name, desc, img) {
   let currentcolor = document.querySelector("#color-input").value;
   DOMSelectors.container.insertAdjacentHTML(
     "beforeEnd",
-    `<div class="card" id="${id}"><h1 class="card-header">${name}</h1><img src="${img}" alt="${name}" class="card-img"><p>${desc}</p><button class="removeBtn" id="remove${id}">Remove</button></div>`
+    `<div class="card" id="card-${id}"><h1 class="card-header">${name}</h1><img src="${img}" alt="${name}" class="card-img"><p>${desc}</p><button class="removeBtn" id="remove-${id}">Remove</button></div>`
   );
+  cardids.push({ id });
   coloring(currentcolor);
 }
 function deleter(cardid) {
   const remove = document.querySelector(`#remove-${cardid}`);
   remove.addEventListener("click", function () {
-    const card = document.querySelector(`${cardid}`);
+    const card = document.querySelector(`#card-${cardid}`);
     card.remove();
+    cardids = cardids.filter((currentcard) => currentcard.id !== cardid);
   });
 }
 function clear() {
