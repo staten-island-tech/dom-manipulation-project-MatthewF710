@@ -11,7 +11,7 @@ const DOMSelectors = {
 };
 let currentcard;
 let currentdesc;
-let currentimg;
+let currentimg
 let currentcolor;
 function back(color) {
   let cards = document.getElementsByClassName("card");
