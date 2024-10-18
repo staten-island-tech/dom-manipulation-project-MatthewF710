@@ -84,6 +84,15 @@ h1 {
 }
 .description{
     text-align: center;
+    width: 80%;
+}
+button{
+    transition: background-color 0.5s ease, transform 0.5s ease
+}
+button:hover{
+    background-color: rgb(135, 135, 135);
+    transform: scale(1.1);
+    cursor: pointer;
 }
 @media (max-width: 1290px) {
     h1 {

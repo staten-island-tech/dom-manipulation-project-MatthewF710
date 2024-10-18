@@ -13,10 +13,36 @@ let currentcard;
 let currentdesc;
 let currentimg
 let currentcolor;
-function back(color) {
+let id = 0;
+let cardids = [];
+function coloring(color) {
   let cards = document.getElementsByClassName("card");
   cards[cards.length - 1].style.backgroundColor = `rgb(${color})`;
   console.log(cards[cards.length - 1].style.backgroundColor);
+}
+function create(name, desc, img) {
+  id += 1;
+  let currentcolor = document.querySelector("#color-input").value;
+  DOMSelectors.container.insertAdjacentHTML(
+    "beforeEnd",
+    `<div class="card" id="card-${id}"><h1 class="card-header">${name}</h1><img src="${img}" alt="${name}" class="card-img"><p>${desc}</p><button class="removeBtn" id="remove-${id}">Remove</button></div>`
+  );
+  cardids.push({ id });
+  coloring(currentcolor);
+}
+function deleter(cardid) {
+  const remove = document.querySelector(`#remove-${cardid}`);
+  remove.addEventListener("click", function () {
+    const card = document.querySelector(`#card-${cardid}`);
+    card.remove();
+    cardids = cardids.filter((currentcard) => currentcard.id !== cardid);
+  });
+}
+function clear() {
+  document.querySelector("#name-input").value = "";
+  document.querySelector("#description-input").value = "";
+  document.querySelector("#image-input").value = "";
+  document.querySelector("#color-input").value = "";
 }
 DOMSelectors.form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -24,22 +50,10 @@ DOMSelectors.form.addEventListener("submit", function (event) {
   let currentcard = document.querySelector("#name-input").value;
   let currentdesc = document.querySelector("#description-input").value;
   let currentimg = document.querySelector("#image-input").value;
-  let currentcolor = document.querySelector("#color-input").value;
-  //value inputs
-  console.log(
-    "Title:",
-    currentcard,
-    "\nDescription:",
-    currentdesc,
-    "\nImage (link):",
-    currentimg,
-    "\nColor (rgb):",
-    currentcolor
-  );
   //inserting card
-  DOMSelectors.container.insertAdjacentHTML(
-    "beforeEnd",
-    `<div class="card"><h1 class="card-header">${currentcard}</h1><img src="${currentimg}" alt="card-img" class="card-img"><p>${currentdesc}</p><button class="removeBtn">Remove</button></div>`
-  );
-  back(currentcolor);
+  create(currentcard, currentdesc, currentimg);
+  //gets rid of stuff inside bar
+  clear();
+  //for getting rid of card
+  deleter(id);
 });
