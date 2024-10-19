@@ -8,11 +8,11 @@ const DOMSelectors = {
   button: document.querySelector(".btn"),
   form: document.querySelector(".form"),
   container: document.querySelector(".container"),
+  cardtitle: document.querySelector("#name-input"),
+  carddesc: document.querySelector("#description-input"),
+  cardimg: document.querySelector("#image-input"),
+  cardcolor: document.querySelector("#color-input"),
 };
-let currentcard;
-let currentdesc;
-let currentimg
-let currentcolor;
 let id = 0;
 let cardids = [];
 function coloring(color) {
@@ -22,7 +22,7 @@ function coloring(color) {
 }
 function create(name, desc, img) {
   id += 1;
-  let currentcolor = document.querySelector("#color-input").value;
+  let currentcolor = DOMSelectors.cardcolor.value;
   DOMSelectors.container.insertAdjacentHTML(
     "beforeEnd",
     `<div class="card" id="card-${id}"><h1 class="card-header">${name}</h1><img src="${img}" alt="${name}" class="card-img"><p>${desc}</p><button class="removeBtn" id="remove-${id}">Remove</button></div>`
@@ -39,21 +39,24 @@ function deleter(cardid) {
   });
 }
 function clear() {
-  document.querySelector("#name-input").value = "";
-  document.querySelector("#description-input").value = "";
-  document.querySelector("#image-input").value = "";
-  document.querySelector("#color-input").value = "";
+  DOMSelectors.cardtitle.value = "";
+  DOMSelectors.carddesc.value = "";
+  DOMSelectors.cardimg.value = "";
+  DOMSelectors.cardcolor.value = "";
 }
-DOMSelectors.form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  //redefining variables
-  let currentcard = document.querySelector("#name-input").value;
-  let currentdesc = document.querySelector("#description-input").value;
-  let currentimg = document.querySelector("#image-input").value;
-  //inserting card
-  create(currentcard, currentdesc, currentimg);
-  //gets rid of stuff inside bar
-  clear();
-  //for getting rid of card
-  deleter(id);
-});
+function final() {
+  DOMSelectors.form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    //redefining variables
+    let currentcard = DOMSelectors.cardtitle.value;
+    let currentdesc = DOMSelectors.carddesc.value;
+    let currentimg = DOMSelectors.cardimg.value;
+    //inserting card
+    create(currentcard, currentdesc, currentimg);
+    //gets rid of stuff inside bar
+    clear();
+    //for getting rid of card
+    deleter(id);
+  });
+}
+final();
