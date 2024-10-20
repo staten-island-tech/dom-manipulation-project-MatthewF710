@@ -34,6 +34,7 @@ h1 {
     font-size: 3rem;
     text-shadow: 5px 5px 2.5px rgb(0, 0, 0);
     color: rgb(7, 255, 218);
+    text-align: center;
 }
 .main-btn {
     height: 5rem;
@@ -71,7 +72,7 @@ h1 {
     box-shadow: 10px 10px 5px rgb(41, 62, 65);
 }
 .card-img{
-    height: 150px;
+    height: 15rem;
     object-fit: cover;
     display: block;
     margin: 0 auto;
@@ -82,9 +83,9 @@ h1 {
     font-size: 2rem;
     text-align: center;
 }
-.description{
+.card-desc {
     text-align: center;
-    width: 80%;
+    width: auto;
 }
 button{
     transition: background-color 0.5s ease, transform 0.5s ease
@@ -103,18 +104,20 @@ button:hover{
     }
     .card {
         width: 25%;
-        height: 30rem;
+        height: auto;
+    }
+    .card-img {
+        width: 95%;
+        height: auto
     }
 }
 @media (max-width: 1082px){
     .card {
         width: 38%;
-        height: 30rem;
     }
 }
 @media (max-width: 724px){
     .card {
         width: 80%;
-        height: 30rem;
     }
 }

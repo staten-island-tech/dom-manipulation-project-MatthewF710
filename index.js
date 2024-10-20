@@ -18,22 +18,21 @@ let cardids = [];
 function coloring(color) {
   let cards = document.getElementsByClassName("card");
   cards[cards.length - 1].style.backgroundColor = `rgb(${color})`;
-  console.log(cards[cards.length - 1].style.backgroundColor);
 }
 function create(name, desc, img) {
   id += 1;
   let currentcolor = DOMSelectors.cardcolor.value;
   DOMSelectors.container.insertAdjacentHTML(
     "beforeEnd",
-    `<div class="card" id="card-${id}"><h1 class="card-header">${name}</h1><img src="${img}" alt="${name}" class="card-img"><p>${desc}</p><button class="removeBtn" id="remove-${id}">Remove</button></div>`
+    `<div class="card" id="card-${id}"><h1 class="card-header">${name}</h1><img src="${img}" alt="${name}" class="card-img"><p class="card-desc">${desc}</p><button class="removeBtn" id="remove-${id}">Remove</button></div>`
   );
   cardids.push({ id });
   coloring(currentcolor);
 }
 function deleter(cardid) {
-  const remove = document.querySelector(`#remove-${cardid}`);
+  let remove = document.querySelector(`#remove-${cardid}`);
   remove.addEventListener("click", function () {
-    const card = document.querySelector(`#card-${cardid}`);
+    let card = document.querySelector(`#card-${cardid}`);
     card.remove();
     cardids = cardids.filter((currentcard) => currentcard.id !== cardid);
   });
